@@ -1,4 +1,5 @@
 obj-m += monitor.o
+ccflags-y := -Wno-error -Wno-unused-function
 
 KDIR := /lib/modules/$(shell uname -r)/build
 PWD := $(shell pwd)
