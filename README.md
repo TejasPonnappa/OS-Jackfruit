@@ -225,4 +225,5 @@ CFS uses nice values to set per-task weights — nice -10 gets approximately 4×
 | lopri     | +10  | 10s wall-clock | Completed all 10 elapsed ticks |
 
 Both containers completed their 10-second wall-clock run. On a single-core VM, CFS time-slices between both processes — the nice value difference (20 levels, ~4× weight ratio) affects how much CPU time each gets within each scheduling period, but since `cpu_hog` terminates based on `time()` (wall-clock) rather than CPU time consumed, both containers always report the same duration.
+
 **Limitation:** A better experiment would use a fixed iteration count and measure wall-clock completion time — the high-priority container would finish first. This demonstrates a key CFS property: nice values shift *throughput share*, not wall-clock completion time.
